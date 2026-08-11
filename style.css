@@ -154,3 +154,14 @@ body{min-width:320px}
   .page-bg{display:none!important}
   .site-shell{width:100%;max-width:430px;margin:0 auto;border-radius:0;box-shadow:none}
 }
+
+/* Hide tax display in featured plan only */
+.featured-plan__tax{display:none!important}
+
+/* teacher career */
+.teacher-career{margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+.teacher-career__heading{margin:0 0 16px;font-size:15px;font-weight:700;line-height:1.4}
+.teacher-career__list{display:flex;flex-direction:column;gap:9px}
+.teacher-career__item{display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:16px;align-items:start;font-size:12px;line-height:1.7}
+.teacher-career__year{font-weight:500;white-space:nowrap}
+.teacher-career__detail{min-width:0}

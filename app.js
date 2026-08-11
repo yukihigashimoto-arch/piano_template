@@ -35,6 +35,7 @@
   setText("teacherCatch", c.teacher.catch);
   setText("teacherMessage", c.teacher.message);
   setText("teacherName", c.teacher.name);
+  setText("teacherCareerHeading", c.teacher.careerHeading || "経歴");
   setText("courseHeading", c.course.heading);
   setText("courseNote", c.course.note);
   setText("trialHeading", c.trial.heading);
@@ -172,6 +173,21 @@
   };
 
   loadNoteNews();
+
+  const careerItems = Array.isArray(c.teacher.career) ? c.teacher.career : [];
+  const careerArea = qs("#teacherCareer");
+  const careerList = qs("#teacherCareerList");
+  if (careerArea && careerList) {
+    if (careerItems.length) {
+      careerList.innerHTML = careerItems.map(item => `
+        <div class="teacher-career__item">
+          <span class="teacher-career__year">${escapeHtml(item.year || '')}</span>
+          <span class="teacher-career__detail">${escapeHtml(item.detail || '')}</span>
+        </div>`).join("");
+    } else {
+      careerArea.hidden = true;
+    }
+  }
 
   qs("#features").innerHTML = c.feature.items.map((item, i) => `
     <article class="feature-item">
