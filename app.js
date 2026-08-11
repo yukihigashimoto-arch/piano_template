@@ -39,8 +39,8 @@
   setText("courseNote", c.course.note);
   setText("trialHeading", c.trial.heading);
   setText("trialMiniText", c.trial.miniText);
-  setText("pcQrLabel", c.pcQr?.label || "access with smartphone");
   setText("pcQrText", c.pcQr?.text || "スマートフォンで\nアクセスはこちら");
+  setText("pcQrLabel", c.pcQr?.label || "access with smartphone");
   setText("contactLead", c.contact.lead);
   setText("primaryCtaLabel", c.contact.primary.label);
   setText("secondaryCtaLabel", c.contact.secondary.label);
