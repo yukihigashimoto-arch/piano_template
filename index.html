@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./font.css">
   <script defer src="./school-config.js"></script>
+  <script defer src="./qr-generator.js"></script>
   <script defer src="./app.js"></script>
 </head>
 <body>
@@ -21,9 +22,13 @@
   </aside>
 
   <aside class="desktop-cta" aria-label="お問い合わせ">
-    <div class="mini-card">
-      <span class="mini-card__label">trial lesson</span>
-      <strong data-bind="trialMiniText">体験レッスン受付中</strong>
+    <div class="pc-qr-card">
+      <div class="pc-qr-card__copy">
+        <span class="pc-qr-card__label" data-bind="pcQrLabel">access with smartphone</span>
+        <strong data-bind="pcQrText">スマートフォンで
+アクセスはこちら</strong>
+      </div>
+      <canvas id="pcQrCanvas" class="pc-qr-card__qr" width="180" height="180" aria-label="スマートフォンアクセス用QRコード"></canvas>
     </div>
     <a class="side-button side-button--sub" data-link="secondaryCta" href="#contact">お問い合わせ</a>
     <a class="side-button side-button--main" data-link="primaryCta" href="#contact">体験レッスン</a>

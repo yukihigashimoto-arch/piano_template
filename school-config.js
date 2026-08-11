@@ -144,6 +144,12 @@ window.SCHOOL_CONFIG = {
     mapEmbedUrl: ""
   },
 
+  pcQr: {
+    url: "https://example.com/",
+    label: "access with smartphone",
+    text: "スマートフォンで\nアクセスはこちら"
+  },
+
   contact: {
     lead: "体験レッスンやご質問など、お気軽にお問い合わせください。",
     primary: { label: "体験レッスンを予約する", url: "#contact" },

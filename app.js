@@ -39,6 +39,8 @@
   setText("courseNote", c.course.note);
   setText("trialHeading", c.trial.heading);
   setText("trialMiniText", c.trial.miniText);
+  setText("pcQrLabel", c.pcQr?.label || "access with smartphone");
+  setText("pcQrText", c.pcQr?.text || "スマートフォンで\nアクセスはこちら");
   setText("contactLead", c.contact.lead);
   setText("primaryCtaLabel", c.contact.primary.label);
   setText("secondaryCtaLabel", c.contact.secondary.label);
@@ -50,6 +52,46 @@
   setHref("primaryCta", c.contact.primary.url);
   setHref("secondaryCta", c.contact.secondary.url);
   setHref("instagram", c.contact.instagram.url);
+
+  const renderPcQr = () => {
+    const canvas = qs("#pcQrCanvas");
+    const url = c.pcQr?.url || "";
+    if (!canvas || !url || !window.LocalQRCodeMatrix || !window.LocalQRErrorCorrectLevel) return;
+
+    const qr = new window.LocalQRCodeMatrix(0, window.LocalQRErrorCorrectLevel.M);
+    qr.addData(url);
+    qr.make();
+
+    const count = qr.getModuleCount();
+    const quiet = 4;
+    const total = count + quiet * 2;
+    const cssSize = 112;
+    const ratio = Math.max(2, window.devicePixelRatio || 1);
+    canvas.width = Math.round(cssSize * ratio);
+    canvas.height = Math.round(cssSize * ratio);
+    canvas.style.width = `${cssSize}px`;
+    canvas.style.height = `${cssSize}px`;
+
+    const ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const cell = canvas.width / total;
+    ctx.fillStyle = "#000000";
+    for (let row = 0; row < count; row++) {
+      for (let col = 0; col < count; col++) {
+        if (!qr.isDark(row, col)) continue;
+        const x0 = Math.round((col + quiet) * cell);
+        const y0 = Math.round((row + quiet) * cell);
+        const x1 = Math.round((col + quiet + 1) * cell);
+        const y1 = Math.round((row + quiet + 1) * cell);
+        ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
+      }
+    }
+  };
+
+  renderPcQr();
 
   const imageMap = {
     hero: c.images.hero,
