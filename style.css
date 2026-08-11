@@ -74,7 +74,8 @@ button{font:inherit}
 /* smartphone-only v3 */
 html,body{background:#fff}
 body{min-width:320px}
-.page-bg,.desktop-nav,.desktop-cta{display:none!important}
+.page-bg{display:none!important}
+.desktop-nav,.desktop-cta{display:none!important}
 .site-shell{width:100%;max-width:430px;margin:0 auto;border-radius:0;box-shadow:none;overflow:hidden;background:#fff}
 .mobile-header{display:flex}
 .mobile-bottom{position:fixed;display:grid;grid-template-columns:1fr 1.2fr;left:50%;right:auto;bottom:0;width:100%;max-width:430px;height:62px;transform:translateX(-50%);z-index:50;box-shadow:0 -5px 22px rgba(0,0,0,.12)}
@@ -110,4 +111,52 @@ body{min-width:320px}
   .featured-plan__title{font-size:13px}
   .featured-plan__price{font-size:53px}
   .featured-plan__note{font-size:8px;line-height:1.45}
+}
+
+
+/* PC side UI restore: desktop only */
+@media (min-width:841px){
+  html,body{background:var(--theme)}
+  .page-bg{display:block!important;background:linear-gradient(135deg,var(--theme),var(--theme-dark));z-index:0}
+  .site-shell{z-index:1}
+  .desktop-nav{display:block!important;color:#fff;left:50px;top:50px;width:250px}
+  .desktop-nav .brand-mark{color:#fff}
+  .desktop-nav nav a{color:#fff}
+  .desktop-nav__small{color:rgba(255,255,255,.72)}
+  .desktop-cta{display:block!important}
+}
+
+
+/* exact original-side breakpoint restore v8 */
+/* Original STUDIO behavior: outer fixed visual remains visible above 540px;
+   side navigation itself disappears at 840px. */
+@media (min-width:541px){
+  html,body{background:#ebeff2}
+  .page-bg{
+    display:block!important;
+    position:fixed;
+    inset:0;
+    background:
+      linear-gradient(148deg,rgba(255,255,255,.08) 0 20%,transparent 20% 100%),
+      linear-gradient(32deg,rgba(255,255,255,.06) 0 27%,transparent 27% 100%),
+      linear-gradient(212deg,rgba(61,142,191,.12) 0 30%,transparent 30% 100%),
+      linear-gradient(326deg,rgba(255,255,255,.07) 0 24%,transparent 24% 100%),
+      linear-gradient(135deg,#74b8df 0%,#69b1da 50%,#75b9df 100%);
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    z-index:0;
+  }
+  .site-shell{
+    width:430px;
+    max-width:430px;
+    margin:50px auto 0;
+    border-radius:22px 22px 0 0;
+    box-shadow:0 15px 30px 20px color-mix(in srgb,var(--theme) 30%,transparent);
+    z-index:1;
+  }
+}
+@media (max-width:540px){
+  .page-bg{display:none!important}
+  .site-shell{width:100%;max-width:430px;margin:0 auto;border-radius:0;box-shadow:none}
 }
