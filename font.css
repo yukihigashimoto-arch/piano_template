@@ -1,0 +1,21 @@
+/**
+ * =============================================================
+ * フォント設定
+ * このファイルだけ変更すれば、サイト全体のフォントを変更できます。
+ * =============================================================
+ *
+ * --sans    : 本文・ボタン・ナビなど
+ * --display : 見出し・英字ラベル・料金など
+ *
+ * 例：サイト全体をゴシック体にする場合
+ * --sans: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+ * --display: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+ *
+ * Google Fontsなどを使う場合は、このファイルの先頭に @import を追加し、
+ * 下のフォント名を書き換えてください。
+ */
+
+:root {
+  --sans: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  --display: "Times New Roman", "Yu Mincho", "Hiragino Mincho ProN", serif;
+}
