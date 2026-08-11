@@ -11,7 +11,7 @@
  * 5. news          : note のURL
  * 6. about         : 教室紹介文
  * 7. feature       : 特徴3つの見出し・本文
- * 8. featuredPlan  : 大きい料金パネル
+ * 8. featuredPlan  : ヒーロー直下の大きい料金パネル
  * 9. course        : 通常のコース一覧
  * 10. trial        : 体験レッスンの流れ
  * 11. faq          : よくある質問
@@ -92,7 +92,7 @@ window.SCHOOL_CONFIG = {
 
   featuredPlan: {
     enabled: true,
-    badge: "予約不要！",
+    badge: "予約\n不要!",
     title: "スタジオ使い放題プラン",
     sideLabel: "standard plan",
     feeLabel: "月会費",
