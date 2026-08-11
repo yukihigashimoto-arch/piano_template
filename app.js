@@ -71,6 +71,7 @@
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+  const nl2br = (value = "") => escapeHtml(value).replace(/\n/g, '<br>');
 
   const renderNews = (items = [], profileUrl = "") => {
     const limited = items.slice(0, c.news?.maxItems || 3);
@@ -137,6 +138,23 @@
       <h3>${item.title}</h3>
       <p>${item.text}</p>
     </article>`).join("");
+
+  if (c.featuredPlan?.enabled) {
+    qs('#featuredPlan').innerHTML = `
+      <article class="featured-plan">
+        <div class="featured-plan__badge">${nl2br(c.featuredPlan.badge || '')}</div>
+        <div class="featured-plan__side">${escapeHtml(c.featuredPlan.sideLabel || '')}</div>
+        <h3 class="featured-plan__title"><span>${escapeHtml(c.featuredPlan.title || '')}</span></h3>
+        <div class="featured-plan__main">
+          <div class="featured-plan__label">${escapeHtml(c.featuredPlan.feeLabel || '')}</div>
+          <div class="featured-plan__price">${escapeHtml(c.featuredPlan.price || '')}<small>${escapeHtml(c.featuredPlan.priceUnit || '')}</small></div>
+          <div class="featured-plan__tax">${nl2br(c.featuredPlan.taxText || '')}</div>
+        </div>
+        <p class="featured-plan__note">${nl2br(c.featuredPlan.note || '')}</p>
+      </article>`;
+  } else {
+    qs('#featuredPlan').innerHTML = '';
+  }
 
   qs("#courses").innerHTML = c.course.items.map(item => `
     <article class="course-card">

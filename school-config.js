@@ -3,6 +3,22 @@
  * ピアノ教室ごとの変更は、基本的にこのファイルだけで完結します。
  * ==============================================================
  *
+ * 主に変更する場所：
+ * 1. school        : 教室名・タイトル・説明文
+ * 2. theme         : サイト全体の色
+ * 3. images        : FV / 教室紹介 / 講師 / 特徴3枚の画像
+ * 4. hero          : ファーストビュー文言
+ * 5. news          : note のURL
+ * 6. about         : 教室紹介文
+ * 7. feature       : 特徴3つの見出し・本文
+ * 8. featuredPlan  : 大きい料金パネル
+ * 9. course        : 通常のコース一覧
+ * 10. trial        : 体験レッスンの流れ
+ * 11. faq          : よくある質問
+ * 12. access       : 住所・アクセス・地図
+ * 13. contact      : CTAリンク・Instagram
+ * 14. nav          : 右側メニューとフッターリンク
+ *
  * 画像ファイルも index.html と同じ階層に置き、images.hero などのファイル名を書き換えてください。
  * themeColor / themeDark / accentColor を変えるとサイト全体の色が変わります。
  * NEWS は note RSS と連携します。下の news.profileUrl / feedUrl を変更してください。
@@ -72,6 +88,18 @@ window.SCHOOL_CONFIG = {
         text: "希望者向けの発表会や教室イベントを通じて、人前で演奏する楽しさや達成感を経験できます。"
       }
     ]
+  },
+
+  featuredPlan: {
+    enabled: true,
+    badge: "予約不要！",
+    title: "スタジオ使い放題プラン",
+    sideLabel: "standard plan",
+    feeLabel: "月会費",
+    price: "8,000",
+    priceUnit: "円",
+    taxText: "税込\n8,800円",
+    note: "【初期費用】入会金：8,000円（税込8,800円）＋入会手数料（セキュリティキー発行費）5,000円（税込5,500円）＋初月日割会費＋翌月会費\n※休会する場合、休会費1,000円（税込1,100円）"
   },
 
   teacher: {
