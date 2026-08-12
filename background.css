@@ -1,0 +1,32 @@
+/* ==============================================================
+   PC OUTER BACKGROUND ONLY
+   Replace background.webp to change the background image.
+   Edit this file only when changing the background animation.
+   ============================================================== */
+
+.page-bg {
+  background-image: url("./background.webp") !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  transform: scale(1.06);
+  transform-origin: center center;
+  animation: pageBackgroundDrift 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes pageBackgroundDrift {
+  0% {
+    transform: scale(1.06) translate3d(-0.5%, 0, 0);
+  }
+  100% {
+    transform: scale(1.10) translate3d(0.5%, -0.35%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-bg {
+    animation: none;
+    transform: scale(1.06);
+  }
+}
