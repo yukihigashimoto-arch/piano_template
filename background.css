@@ -1,32 +1,140 @@
 /* ==============================================================
-   PC OUTER BACKGROUND ONLY
-   Replace background.webp to change the background image.
-   Edit this file only when changing the background animation.
+   PC OUTER BACKGROUND / SIDE UI ONLY
+   - Central LP (.site-shell and everything inside it) is untouched.
+   - Replace background.webp to change only the base gradient.
+   - Five-line staff is static.
+   - Notes and treble clefs animate in CSS.
    ============================================================== */
 
-.page-bg {
-  background-image: url("./background.webp") !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  transform: scale(1.06);
-  transform-origin: center center;
-  animation: pageBackgroundDrift 24s ease-in-out infinite alternate;
-  will-change: transform;
+.page-bg{
+  pointer-events:none;
+  overflow:hidden;
+  background:url("./background.webp") center/cover no-repeat !important;
+  transform:none;
 }
 
-@keyframes pageBackgroundDrift {
-  0% {
-    transform: scale(1.06) translate3d(-0.5%, 0, 0);
-  }
-  100% {
-    transform: scale(1.10) translate3d(0.5%, -0.35%, 0);
-  }
+/* Static musical staff lines. */
+.page-bg::before{
+  content:"";
+  position:absolute;
+  inset:-4%;
+  opacity:.34;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22900%22%20height%3D%22520%22%20viewBox%3D%220%200%20900%20520%22%3E%0A%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222%22%20opacity%3D%220.68%22%3E%0A%3Cpath%20d%3D%22M-40%20110%20C160%2045%20300%20165%20480%20100%20S760%2052%20950%2096%22%2F%3E%0A%3Cpath%20d%3D%22M-40%20123%20C160%2058%20300%20178%20480%20113%20S760%2065%20950%20109%22%2F%3E%0A%3Cpath%20d%3D%22M-40%20136%20C160%2071%20300%20191%20480%20126%20S760%2078%20950%20122%22%2F%3E%0A%3Cpath%20d%3D%22M-40%20149%20C160%2084%20300%20204%20480%20139%20S760%2091%20950%20135%22%2F%3E%0A%3Cpath%20d%3D%22M-40%20162%20C160%2097%20300%20217%20480%20152%20S760%20104%20950%20148%22%2F%3E%0A%3Cpath%20d%3D%22M-70%20372%20C145%20300%20315%20430%20510%20350%20S780%20308%20970%20356%22%2F%3E%0A%3Cpath%20d%3D%22M-70%20385%20C145%20313%20315%20443%20510%20363%20S780%20321%20970%20369%22%2F%3E%0A%3Cpath%20d%3D%22M-70%20398%20C145%20326%20315%20456%20510%20376%20S780%20334%20970%20382%22%2F%3E%0A%3Cpath%20d%3D%22M-70%20411%20C145%20339%20315%20469%20510%20389%20S780%20347%20970%20395%22%2F%3E%0A%3Cpath%20d%3D%22M-70%20424%20C145%20352%20315%20482%20510%20402%20S780%20360%20970%20408%22%2F%3E%0A%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size:900px 520px;
+  background-repeat:repeat;
+  background-position:center top;
+  transform:none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .page-bg {
-    animation: none;
-    transform: scale(1.06);
+/* Animated notes + treble clefs. Slightly stronger than the first draft. */
+.page-bg::after{
+  content:"";
+  position:absolute;
+  inset:-12%;
+  opacity:.86;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22620%22%20height%3D%22620%22%20viewBox%3D%220%200%20620%20620%22%3E%0A%3Cg%20font-family%3D%22Noto%20Music%2C%20serif%22%3E%0A%20%20%3Ctext%20x%3D%2230%22%20y%3D%22330%22%20font-size%3D%22180%22%20fill%3D%22%235892bf%22%20opacity%3D%220.58%22%3E%F0%9D%84%9E%3C%2Ftext%3E%0A%20%20%3Ctext%20x%3D%22420%22%20y%3D%22585%22%20font-size%3D%22132%22%20fill%3D%22%2375b3db%22%20opacity%3D%220.48%22%3E%F0%9D%84%9E%3C%2Ftext%3E%0A%20%20%3Ctext%20x%3D%22250%22%20y%3D%22120%22%20font-size%3D%2250%22%20fill%3D%22%235892bf%22%20opacity%3D%220.64%22%3E%E2%99%AA%3C%2Ftext%3E%0A%20%20%3Ctext%20x%3D%22470%22%20y%3D%22190%22%20font-size%3D%2264%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.72%22%3E%E2%99%AB%3C%2Ftext%3E%0A%20%20%3Ctext%20x%3D%22190%22%20y%3D%22470%22%20font-size%3D%2262%22%20fill%3D%22%2375b3db%22%20opacity%3D%220.62%22%3E%E2%99%AB%3C%2Ftext%3E%0A%20%20%3Ctext%20x%3D%22505%22%20y%3D%22420%22%20font-size%3D%2248%22%20fill%3D%22%235892bf%22%20opacity%3D%220.56%22%3E%E2%99%AA%3C%2Ftext%3E%0A%20%20%3Ctext%20x%3D%2282%22%20y%3D%22555%22%20font-size%3D%2244%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.68%22%3E%E2%99%AA%3C%2Ftext%3E%0A%20%20%3Ccircle%20cx%3D%22340%22%20cy%3D%2278%22%20r%3D%224%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.55%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%22548%22%20cy%3D%22295%22%20r%3D%225%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.44%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%22330%22%20cy%3D%22535%22%20r%3D%223%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.62%22%2F%3E%0A%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size:620px 620px;
+  background-repeat:repeat;
+  background-position:0 90px;
+  animation:floatingMusicSymbols 26s linear infinite;
+  will-change:background-position,transform;
+}
+
+@keyframes floatingMusicSymbols{
+  0%{background-position:0 90px;transform:translate3d(0,1.2%,0)}
+  50%{transform:translate3d(1.2%,-.4%,0)}
+  100%{background-position:85px -160px;transform:translate3d(-.4%,-1.4%,0)}
+}
+
+/* Desktop side navigation: allowed outer UI only. */
+@media (min-width:1180px){
+  .desktop-nav{
+    left:0!important;
+    top:0!important;
+    bottom:0;
+    width:176px!important;
+    padding:42px 24px 28px;
+    background:rgba(255,255,255,.94);
+    border-right:1px solid rgba(88,146,191,.22);
+    box-shadow:8px 0 30px rgba(70,130,170,.08);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
   }
+  .desktop-nav .brand-mark{
+    display:block;
+    margin:0 0 38px;
+    color:#315b78!important;
+    font-size:21px;
+    line-height:1.35;
+    letter-spacing:.04em;
+  }
+  .desktop-nav nav{gap:0!important}
+  .desktop-nav nav a{
+    position:relative;
+    width:100%;
+    padding:11px 2px 11px 17px;
+    color:#46525a!important;
+    font-size:12px!important;
+    border-bottom:1px solid rgba(88,146,191,.10);
+  }
+  .desktop-nav nav a::before{
+    content:"♪";
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    color:var(--theme-dark);
+    font-size:11px;
+    opacity:.72;
+  }
+  .desktop-nav nav a:hover{
+    color:var(--theme-dark)!important;
+    transform:translateX(3px)!important;
+  }
+  .desktop-nav__small{
+    margin-top:28px!important;
+    color:#7ca6c1!important;
+    font-size:7px!important;
+  }
+
+  .desktop-cta{
+    right:28px!important;
+    bottom:30px!important;
+    width:218px!important;
+  }
+  .desktop-cta .pc-qr-card{
+    background:rgba(255,255,255,.93)!important;
+    border:1px solid rgba(88,146,191,.24);
+    box-shadow:0 10px 30px rgba(55,120,160,.13);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+  .desktop-cta .pc-qr-card__label{color:var(--theme-dark)!important}
+  .desktop-cta .pc-qr-card__copy strong{color:#4e5961}
+  .desktop-cta .side-button{box-shadow:0 8px 18px rgba(53,113,150,.12)}
+}
+
+/* Medium desktop keeps the existing compact layout; only tune its contrast. */
+@media (min-width:841px) and (max-width:1179px){
+  .desktop-nav{
+    padding:20px 18px;
+    border-radius:18px;
+    background:rgba(255,255,255,.84);
+    box-shadow:0 10px 28px rgba(55,120,160,.10);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+  .desktop-nav .brand-mark,
+  .desktop-nav nav a{color:#46525a!important}
+  .desktop-nav__small{color:#719bb5!important}
+  .desktop-cta .pc-qr-card{background:rgba(255,255,255,.90)!important}
+}
+
+/* Mobile: outer PC background and side UI stay absent. */
+@media (max-width:840px){
+  .page-bg::before,.page-bg::after{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .page-bg,.page-bg::before,.page-bg::after{animation:none!important;transform:none!important}
 }
