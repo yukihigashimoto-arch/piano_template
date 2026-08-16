@@ -1,0 +1,41 @@
+{% assign seo = site.data.seo %}
+<title>{{ seo.title | escape }}</title>
+<meta name="description" content="{{ seo.description | escape }}">
+<meta name="robots" content="{{ seo.robots | escape }}">
+{% if seo.canonical_url and seo.canonical_url != "" %}<link rel="canonical" href="{{ seo.canonical_url | escape }}">{% endif %}
+
+<meta property="og:type" content="{{ seo.og.type | escape }}">
+<meta property="og:locale" content="{{ seo.og.locale | escape }}">
+<meta property="og:site_name" content="{{ seo.site_name | escape }}">
+<meta property="og:title" content="{{ seo.og.title | escape }}">
+<meta property="og:description" content="{{ seo.og.description | escape }}">
+{% if seo.canonical_url and seo.canonical_url != "" %}<meta property="og:url" content="{{ seo.canonical_url | escape }}">{% endif %}
+{% if seo.og.image and seo.og.image != "" %}<meta property="og:image" content="{{ seo.og.image | escape }}">{% endif %}
+{% if seo.google_site_verification and seo.google_site_verification != "" %}<meta name="google-site-verification" content="{{ seo.google_site_verification | escape }}">{% endif %}
+
+<meta name="twitter:card" content="{{ seo.twitter.card | escape }}">
+<meta name="twitter:title" content="{{ seo.og.title | escape }}">
+<meta name="twitter:description" content="{{ seo.og.description | escape }}">
+{% if seo.og.image and seo.og.image != "" %}<meta name="twitter:image" content="{{ seo.og.image | escape }}">{% endif %}
+
+{% if seo.schema.enabled %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": {{ seo.schema.type | jsonify }},
+  "name": {{ seo.schema.name | jsonify }},
+  "url": {{ seo.schema.url | jsonify }}{% if seo.schema.image != "" %},
+  "image": {{ seo.schema.image | jsonify }}{% endif %}{% if seo.schema.telephone != "" %},
+  "telephone": {{ seo.schema.telephone | jsonify }}{% endif %}{% if seo.schema.price_range != "" %},
+  "priceRange": {{ seo.schema.price_range | jsonify }}{% endif %}{% if seo.schema.address.postal_code != "" or seo.schema.address.region != "" or seo.schema.address.locality != "" or seo.schema.address.street_address != "" %},
+  "address": {
+    "@type": "PostalAddress",
+    "postalCode": {{ seo.schema.address.postal_code | jsonify }},
+    "addressRegion": {{ seo.schema.address.region | jsonify }},
+    "addressLocality": {{ seo.schema.address.locality | jsonify }},
+    "streetAddress": {{ seo.schema.address.street_address | jsonify }},
+    "addressCountry": "JP"
+  }{% endif %}
+}
+</script>
+{% endif %}

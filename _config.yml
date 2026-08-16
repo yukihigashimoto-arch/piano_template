@@ -1,0 +1,4 @@
+# GitHub Pages / Jekyll 設定
+# SEOの内容は _data/seo.yml で管理します。
+encoding: "utf-8"
+markdown: kramdown

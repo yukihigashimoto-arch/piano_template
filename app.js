@@ -17,10 +17,6 @@
   document.documentElement.style.setProperty("--bg", c.theme.backgroundColor);
   document.documentElement.style.setProperty("--text", c.theme.textColor);
 
-  document.title = c.school.title;
-  const desc = qs('meta[name="description"]');
-  if (desc) desc.content = c.school.description;
-
   setText("schoolName", c.school.name);
   setText("schoolNameShort", c.school.shortName);
   setText("heroEyebrow", c.hero.eyebrow);

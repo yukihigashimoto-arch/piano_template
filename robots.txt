@@ -1,0 +1,7 @@
+---
+layout: null
+---
+User-agent: *
+Allow: /
+
+{% if site.data.seo.canonical_url and site.data.seo.canonical_url != "" %}Sitemap: {{ site.data.seo.canonical_url }}sitemap.xml{% endif %}

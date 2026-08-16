@@ -1,0 +1,45 @@
+# ==============================================================
+# SEO設定
+# GitHub Pages（Jekyll）がこの内容を index.html の <head> に埋め込みます。
+# SEO関連の変更は、基本的にこのファイルだけを編集してください。
+# ==============================================================
+
+site_name: "Harmony Piano Studio"
+title: "Harmony Piano Studio｜一人ひとりに寄り添うピアノ教室"
+description: "初心者のお子さまから大人まで、一人ひとりのペースに寄り添うピアノ教室です。体験レッスン受付中。"
+
+# 公開後のトップページURLを、末尾 / 付きの絶対URLで設定してください。
+# 例: https://example.com/
+canonical_url: ""
+
+robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+
+# Google Search Console のHTMLタグ確認を使う場合、content の値だけを入力してください。
+google_site_verification: ""
+
+og:
+  type: "website"
+  locale: "ja_JP"
+  title: "Harmony Piano Studio｜一人ひとりに寄り添うピアノ教室"
+  description: "初心者のお子さまから大人まで、一人ひとりのペースに寄り添うピアノ教室です。体験レッスン受付中。"
+  # OGP画像を用意した場合は絶対URLに変更してください。
+  image: ""
+
+# X（旧Twitter）で共有されたときのカード設定
+twitter:
+  card: "summary_large_image"
+
+# 構造化データ。実在する教室情報を入力してから enabled: true にしてください。
+schema:
+  enabled: false
+  type: "MusicSchool"
+  name: "Harmony Piano Studio"
+  url: ""
+  image: ""
+  telephone: ""
+  price_range: ""
+  address:
+    postal_code: ""
+    region: ""
+    locality: ""
+    street_address: ""

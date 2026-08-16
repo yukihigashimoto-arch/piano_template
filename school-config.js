@@ -4,7 +4,7 @@
  * ==============================================================
  *
  * 主に変更する場所：
- * 1. school        : 教室名・タイトル・説明文
+ * 1. school        : 教室名（SEOタイトル・説明文は _data/seo.yml）
  * 2. theme         : サイト全体の色
  * 3. images        : FV / 教室紹介 / 講師 / 特徴3枚の画像
  * 4. hero          : ファーストビュー文言
@@ -26,9 +26,7 @@
 window.SCHOOL_CONFIG = {
   school: {
     name: "Harmony Piano Studio",
-    shortName: "HARMONY",
-    title: "Harmony Piano Studio｜一人ひとりに寄り添うピアノ教室",
-    description: "初心者のお子さまから大人まで、一人ひとりのペースに寄り添うピアノ教室です。体験レッスン受付中。"
+    shortName: "HARMONY"
   },
 
   theme: {
